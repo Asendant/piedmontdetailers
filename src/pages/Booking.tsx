@@ -1,7 +1,9 @@
 import { useState, useMemo } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { servicePackages, serviceAreas } from '../data/seed'
-import type { PackageType, Booking } from '../types'
+import type { PackageType } from '../types'
+import type { Booking } from '../types'
 
 // County coordinates (approximate centers) for drive time calculation
 const countyCoordinates: Record<string, { lat: number; lng: number }> = {
@@ -58,7 +60,8 @@ const saveBookings = (bookings: Booking[]) => {
 }
 
 const Booking = () => {
-  const [step, setStep] = useState(1)
+  const navigate = useNavigate()
+  const [showNotAvailableModal, setShowNotAvailableModal] = useState(true)
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -74,6 +77,10 @@ const Booking = () => {
   })
   const [bookings, setBookings] = useState<Booking[]>(loadBookings())
   const [submitted, setSubmitted] = useState(false)
+
+  const handleModalClose = () => {
+    setShowNotAvailableModal(false)
+  }
 
   // Get available time slots for selected date
   const availableTimes = useMemo(() => {
@@ -97,7 +104,6 @@ const Booking = () => {
     const conflictingTimes = bookings
       .filter(b => b.date === formData.date && b.status !== 'cancelled')
       .map(b => {
-        const [hour, minute] = b.time.split(':').map(Number)
         return { time: b.time, county: b.county }
       })
     
@@ -195,6 +201,40 @@ const Booking = () => {
         keywords="book car detailing, schedule detailing, mobile detailing appointment, online booking, car detailing booking"
         url="/booking"
       />
+      {showNotAvailableModal && (
+        <div className="booking-not-available-modal-overlay">
+          <div className="booking-not-available-modal">
+            <div className="booking-not-available-modal-content">
+              <div className="booking-not-available-modal-icon">📅</div>
+              <h2>Online Booking Coming Soon</h2>
+              <p className="booking-not-available-modal-intro">
+                We're currently in the planning stages and will be opening in <strong>September 2026</strong>.
+              </p>
+              <p>
+                Online booking isn't available yet, but we'd love to hear from you! Contact us to show your interest, ask questions, or be notified when we officially launch.
+              </p>
+              <div className="booking-not-available-modal-actions">
+                <Link 
+                  className="btn btn-primary" 
+                  to="/contact"
+                  onClick={handleModalClose}
+                >
+                  Contact Us
+                </Link>
+                <button 
+                  className="btn btn-secondary" 
+                  onClick={() => {
+                    handleModalClose()
+                    navigate('/')
+                  }}
+                >
+                  Return Home
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="page">
       <section className="page-hero">
         <div className="container">
@@ -379,4 +419,5 @@ const Booking = () => {
   )
 }
 
-export default Booking
+const BookingPage = Booking
+export default BookingPage

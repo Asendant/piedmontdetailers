@@ -13,7 +13,7 @@ const Home = () => (
     <SEO
       title="Mobile Car Detailing in the Piedmont Triad"
       description="Showroom shine without leaving your driveway. Piedmont Detailers brings premium mobile car detailing services to every county in the Piedmont Triad. From quick washes to ceramic coating, we tailor each detail to your vehicle."
-      keywords="mobile car detailing, Piedmont Triad, mobile detailer, car wash, paint correction, ceramic coating, Greensboro, Winston-Salem, High Point, mobile auto detailing"
+      keywords="mobile car detailing, Piedmont Triad, mobile detailer, car wash, paint correction, ceramic coating, Greensboro car detailing, Winston-Salem car detailing, High Point car detailing, mobile auto detailing, car detailing near me, mobile detailer Piedmont Triad, professional car detailing NC"
       url="/"
     />
     <div className="page">

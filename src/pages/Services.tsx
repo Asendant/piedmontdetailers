@@ -33,7 +33,7 @@ const Services = () => (
     <SEO
       title="Detailing Services & Packages"
       description="Interior, exterior, and paint correction services tailored to your vehicle. Choose from Express Wash, Full Detail, Interior Deep Clean, Paint Correction, or Ceramic Coating packages."
-      keywords="car detailing services, paint correction, ceramic coating, interior detailing, exterior detailing, mobile detailing packages, car wash services"
+      keywords="car detailing services, paint correction, ceramic coating, interior detailing, exterior detailing, mobile detailing packages, car wash services, car detailing Greensboro, car detailing Winston-Salem, car detailing High Point, mobile detailing services NC"
       url="/services"
     />
     <div className="page">

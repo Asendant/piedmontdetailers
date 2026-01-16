@@ -17,7 +17,7 @@ const siteUrl = 'https://piedmontdetailers.com' // Update with your actual domai
 const SEO = ({
   title,
   description = defaultDescription,
-  keywords = 'mobile car detailing, car detailing, auto detailing, Piedmont Triad, North Carolina, mobile detailer, car wash, paint correction, ceramic coating, interior detailing',
+  keywords = 'mobile car detailing, car detailing, auto detailing, Piedmont Triad, North Carolina, mobile detailer, car wash, paint correction, ceramic coating, interior detailing, Greensboro car detailing, Winston-Salem car detailing, High Point car detailing, mobile car detailing near me',
   image = defaultImage,
   url,
   type = 'website',
@@ -70,18 +70,22 @@ const SEO = ({
 
   // Add structured data (JSON-LD)
   useEffect(() => {
-    const structuredData = {
+    // Main LocalBusiness schema
+    const localBusinessData = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
+      '@id': `${siteUrl}#business`,
       name: 'Piedmont Detailers',
+      alternateName: 'Piedmont Detailers Mobile Car Detailing',
       image: fullImage,
-      '@id': siteUrl,
       url: siteUrl,
       telephone: '+13365550123',
+      email: 'business@piedmontdetailers.com',
       priceRange: '$$',
       address: {
         '@type': 'PostalAddress',
         addressRegion: 'NC',
+        addressState: 'North Carolina',
         addressCountry: 'US',
         addressLocality: 'Piedmont Triad',
       },
@@ -99,13 +103,56 @@ const SEO = ({
         },
       ],
       areaServed: [
-        'Guilford County',
-        'Forsyth County',
-        'Davidson County',
-        'Randolph County',
-        'Stokes County',
-        'Surry County',
-        'Yadkin County',
+        {
+          '@type': 'City',
+          name: 'Greensboro',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'City',
+          name: 'Winston-Salem',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'City',
+          name: 'High Point',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Guilford County',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Forsyth County',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Davidson County',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Randolph County',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Stokes County',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Surry County',
+          addressRegion: 'NC',
+        },
+        {
+          '@type': 'AdministrativeArea',
+          name: 'Yadkin County',
+          addressRegion: 'NC',
+        },
       ],
       serviceArea: {
         '@type': 'GeoCircle',
@@ -114,8 +161,59 @@ const SEO = ({
           latitude: '36.0726',
           longitude: '-80.0531',
         },
+        geoRadius: {
+          '@type': 'Distance',
+          value: '50',
+          unitCode: 'MI',
+        },
       },
       description: description,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Car Detailing Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Express Wash',
+              description: 'Quick exterior wash and dry service',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Full Detail',
+              description: 'Complete interior and exterior detailing',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Interior Deep Clean',
+              description: 'Comprehensive interior cleaning and protection',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Paint Correction',
+              description: 'Professional paint correction and restoration',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Ceramic Coating',
+              description: 'Long-lasting ceramic coating protection',
+            },
+          },
+        ],
+      },
       sameAs: [
         // Add your social media profiles here when available
         // 'https://www.facebook.com/piedmontdetailers',
@@ -123,26 +221,69 @@ const SEO = ({
       ],
     }
 
-    // Remove existing structured data script if present
-    const existingScript = document.getElementById('structured-data')
-    if (existingScript) {
-      existingScript.remove()
+    // Organization schema for additional authority
+    const organizationData = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      '@id': `${siteUrl}#organization`,
+      name: 'Piedmont Detailers',
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`, // Update with your logo URL
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+13365550123',
+        contactType: 'Customer Service',
+        areaServed: 'US',
+        availableLanguage: 'English',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'NC',
+        addressCountry: 'US',
+      },
     }
 
-    // Add new structured data
-    const script = document.createElement('script')
-    script.id = 'structured-data'
-    script.type = 'application/ld+json'
-    script.text = JSON.stringify(structuredData)
-    document.head.appendChild(script)
+    // BreadcrumbList schema for navigation
+    const breadcrumbData = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteUrl,
+        },
+        ...(url && url !== '/' ? [{
+          '@type': 'ListItem',
+          position: 2,
+          name: fullTitle.split('|')[0].trim(),
+          item: fullUrl,
+        }] : []),
+      ],
+    }
+
+    const structuredDataArray = [localBusinessData, organizationData, breadcrumbData]
+
+    // Remove existing structured data scripts if present
+    const existingScripts = document.querySelectorAll('[data-structured-data]')
+    existingScripts.forEach(script => script.remove())
+
+    // Add all structured data schemas
+    structuredDataArray.forEach((data, index) => {
+      const script = document.createElement('script')
+      script.setAttribute('data-structured-data', 'true')
+      script.id = `structured-data-${index}`
+      script.type = 'application/ld+json'
+      script.text = JSON.stringify(data)
+      document.head.appendChild(script)
+    })
 
     return () => {
-      const scriptToRemove = document.getElementById('structured-data')
-      if (scriptToRemove) {
-        scriptToRemove.remove()
-      }
+      const scriptsToRemove = document.querySelectorAll('[data-structured-data]')
+      scriptsToRemove.forEach(script => script.remove())
     }
-  }, [description, fullImage])
+  }, [description, fullImage, fullTitle, fullUrl, url])
 
   return null
 }

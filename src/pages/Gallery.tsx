@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import SEO from '../components/SEO'
 import { loadGallery, saveGallery } from '../data/storage'
 import { useStoredState } from '../hooks/useStoredState'
-import type { GalleryItem, PackageType } from '../types'
+import type { PackageType } from '../types'
 
 const packageLabels: PackageType[] = [
   'Express Wash',
@@ -22,16 +22,6 @@ const Gallery = () => {
     }
     return items.filter((item) => item.packageType === activeFilter)
   }, [activeFilter, items])
-
-  const groupedItems = useMemo(() => {
-    return packageLabels.reduce<Record<string, GalleryItem[]>>((acc, label) => {
-      acc[label] = filteredItems.filter((item) => item.packageType === label)
-      return acc
-    }, {})
-  }, [filteredItems])
-
-  const visiblePackages =
-    activeFilter === 'All' ? packageLabels : [activeFilter]
 
   return (
     <>

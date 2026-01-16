@@ -5,7 +5,7 @@ import ScrollToTop from './components/ScrollToTop'
 import About from './pages/About'
 import Admin from './pages/Admin'
 import Blog from './pages/Blog'
-import Booking from './pages/Booking'
+import BookingPage from './pages/Booking'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
 import Home from './pages/Home'
@@ -24,7 +24,7 @@ const App = () => (
       <Route path="/videos" element={<Videos />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/booking" element={<Booking />} />
+      <Route path="/booking" element={<BookingPage />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

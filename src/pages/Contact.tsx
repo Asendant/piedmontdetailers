@@ -10,7 +10,7 @@ const Contact = () => {
       <SEO
         title="Contact Us - Book Your Mobile Detail"
         description="Contact Piedmont Detailers to schedule your mobile car detailing service. We come to you anywhere in the Piedmont Triad. Call (336) 555-0123 or request a quote online."
-        keywords="contact piedmont detailers, book car detailing, mobile detailing quote, Piedmont Triad detailer contact"
+        keywords="contact piedmont detailers, book car detailing, mobile detailing quote, Piedmont Triad detailer contact, car detailing Greensboro, car detailing Winston-Salem, car detailing High Point, mobile car detailing contact"
         url="/contact"
       />
       <div className="page">

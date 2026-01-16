@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import SEO from '../components/SEO'
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false)
 
   return (
-    <div className="page">
+    <>
+      <SEO
+        title="Contact Us - Book Your Mobile Detail"
+        description="Contact Piedmont Detailers to schedule your mobile car detailing service. We come to you anywhere in the Piedmont Triad. Call (336) 555-0123 or request a quote online."
+        keywords="contact piedmont detailers, book car detailing, mobile detailing quote, Piedmont Triad detailer contact"
+        url="/contact"
+      />
+      <div className="page">
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Book Your Detail</p>
@@ -103,6 +111,7 @@ const Contact = () => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

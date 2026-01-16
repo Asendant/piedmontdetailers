@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SEO from '../components/SEO'
 import { loadBlogs, saveBlogs } from '../data/storage'
 import { useStoredState } from '../hooks/useStoredState'
 import type { BlogPost } from '../types'
@@ -8,7 +9,14 @@ const Blog = () => {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
 
   return (
-    <div className="page">
+    <>
+      <SEO
+        title="Detailing Tips & Blog"
+        description="Learn how to keep your vehicle protected between services and stay up to date on new offerings, techniques, and best practices from our detailing team."
+        keywords="car detailing tips, car care blog, auto detailing advice, vehicle maintenance tips, detailing best practices"
+        url="/blog"
+      />
+      <div className="page">
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Detailing Tips & Updates</p>
@@ -82,6 +90,7 @@ const Blog = () => {
         </div>
       )}
     </div>
+    </>
   )
 }
 

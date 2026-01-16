@@ -1,3 +1,4 @@
+import SEO from '../components/SEO'
 import { loadVideos, saveVideos } from '../data/storage'
 import { useStoredState } from '../hooks/useStoredState'
 
@@ -5,7 +6,14 @@ const Videos = () => {
   const [videos] = useStoredState(loadVideos, saveVideos)
 
   return (
-    <div className="page">
+    <>
+      <SEO
+        title="Detailing Video Gallery"
+        description="Watch our process, techniques, and transformations across the Piedmont Triad. See how we bring vehicles back to showroom condition."
+        keywords="detailing videos, car detailing process, before and after videos, mobile detailing videos, detailing techniques"
+        url="/videos"
+      />
+      <div className="page">
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Before & After Results</p>
@@ -38,6 +46,7 @@ const Videos = () => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

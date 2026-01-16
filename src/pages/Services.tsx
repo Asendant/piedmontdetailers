@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { servicePackages } from '../data/seed'
 
 const addOns = [
@@ -28,7 +29,14 @@ const processSteps = [
 ]
 
 const Services = () => (
-  <div className="page">
+  <>
+    <SEO
+      title="Detailing Services & Packages"
+      description="Interior, exterior, and paint correction services tailored to your vehicle. Choose from Express Wash, Full Detail, Interior Deep Clean, Paint Correction, or Ceramic Coating packages."
+      keywords="car detailing services, paint correction, ceramic coating, interior detailing, exterior detailing, mobile detailing packages, car wash services"
+      url="/services"
+    />
+    <div className="page">
     <section className="page-hero">
       <div className="container">
         <p className="eyebrow">Packages & Pricing Guidance</p>
@@ -106,6 +114,7 @@ const Services = () => (
       </div>
     </section>
   </div>
+  </>
 )
 
 export default Services

@@ -1,5 +1,14 @@
+import SEO from '../components/SEO'
+
 const About = () => (
-  <div className="page">
+  <>
+    <SEO
+      title="About Piedmont Detailers"
+      description="Locally owned mobile detailing team serving the Piedmont Triad. We bring professional-grade equipment and expertise directly to your location with craftsmanship, convenience, and care."
+      keywords="about piedmont detailers, mobile detailing team, professional car detailing, local detailer, Piedmont Triad detailing"
+      url="/about"
+    />
+    <div className="page">
     <section className="about-hero">
       <div className="container">
         <div className="about-hero-content">
@@ -90,6 +99,7 @@ const About = () => (
       </div>
     </section>
   </div>
+  </>
 )
 
 export default About

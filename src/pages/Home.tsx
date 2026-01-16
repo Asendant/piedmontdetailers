@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import { serviceAreas, servicePackages } from '../data/seed'
 
 const highlights = [
@@ -8,7 +9,14 @@ const highlights = [
 ]
 
 const Home = () => (
-  <div className="page">
+  <>
+    <SEO
+      title="Mobile Car Detailing in the Piedmont Triad"
+      description="Showroom shine without leaving your driveway. Piedmont Detailers brings premium mobile car detailing services to every county in the Piedmont Triad. From quick washes to ceramic coating, we tailor each detail to your vehicle."
+      keywords="mobile car detailing, Piedmont Triad, mobile detailer, car wash, paint correction, ceramic coating, Greensboro, Winston-Salem, High Point, mobile auto detailing"
+      url="/"
+    />
+    <div className="page">
     <section className="hero">
       <div className="container hero-content">
         <div>
@@ -115,6 +123,7 @@ const Home = () => (
       </div>
     </section>
   </div>
+  </>
 )
 
 export default Home

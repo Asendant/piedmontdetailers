@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import SEO from '../components/SEO'
 import { loadGallery, saveGallery } from '../data/storage'
 import { useStoredState } from '../hooks/useStoredState'
 import type { GalleryItem, PackageType } from '../types'
@@ -33,7 +34,14 @@ const Gallery = () => {
     activeFilter === 'All' ? packageLabels : [activeFilter]
 
   return (
-    <div className="page">
+    <>
+      <SEO
+        title="Detailing Gallery - Before & After Results"
+        description="Browse real results from our mobile detailing team across the Piedmont Triad. See the quality and attention to detail we bring to every vehicle."
+        keywords="car detailing gallery, before and after detailing, detailing results, car detailing photos, mobile detailing gallery"
+        url="/gallery"
+      />
+      <div className="page">
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Project Highlights</p>
@@ -88,6 +96,7 @@ const Gallery = () => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

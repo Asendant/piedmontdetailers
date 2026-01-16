@@ -4,10 +4,10 @@ import { NavLink } from 'react-router-dom'
 const navItems = [
   { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
+  { label: 'About', to: '/about' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Blog', to: '/blog' },
   { label: 'Videos', to: '/videos' },
-  { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
   { label: 'Book Now', to: '/booking' },
 ]

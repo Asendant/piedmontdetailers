@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import SEO from '../components/SEO'
 import { servicePackages, serviceAreas } from '../data/seed'
 import type { PackageType, Booking } from '../types'
 
@@ -150,7 +151,13 @@ const Booking = () => {
 
   if (submitted) {
     return (
-      <div className="page">
+      <>
+        <SEO
+          title="Booking Confirmed"
+          description="Your booking request has been submitted successfully. We'll confirm your appointment within 24 hours."
+          url="/booking"
+        />
+        <div className="page">
         <section className="page-hero">
           <div className="container">
             <div className="booking-success">
@@ -176,11 +183,19 @@ const Booking = () => {
           </div>
         </section>
       </div>
+      </>
     )
   }
 
   return (
-    <div className="page">
+    <>
+      <SEO
+        title="Book Your Mobile Detailing Service"
+        description="Schedule your mobile car detailing service. Choose your service, date, and location. We'll confirm your appointment and arrive fully equipped at your location."
+        keywords="book car detailing, schedule detailing, mobile detailing appointment, online booking, car detailing booking"
+        url="/booking"
+      />
+      <div className="page">
       <section className="page-hero">
         <div className="container">
           <p className="eyebrow">Book Your Detail</p>
@@ -360,6 +375,7 @@ const Booking = () => {
         </div>
       </section>
     </div>
+    </>
   )
 }
 

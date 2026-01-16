@@ -1,5 +1,6 @@
-import type { ReactNode } from 'react'
+import { useState, useEffect, type ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
+import { HiMenu, HiX } from 'react-icons/hi'
 import WelcomeModal from './WelcomeModal'
 
 const navItems = [
@@ -17,36 +18,115 @@ type LayoutProps = {
   children: ReactNode
 }
 
-const Layout = ({ children }: LayoutProps) => (
-  <div className="app">
-    <WelcomeModal />
-    <header className="site-header">
-      <div className="container header-content">
-        <div className="logo">
-          <span className="logo-mark">PD</span>
-          <div>
-            <p className="logo-title">Piedmont Detailers</p>
-            <p className="logo-subtitle">Mobile Detailing • Triad, NC</p>
+const Layout = ({ children }: LayoutProps) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
+  // Close menu on Escape key press
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [mobileMenuOpen])
+
+  return (
+    <div className="app">
+      <WelcomeModal />
+      <header className="site-header">
+        <div className="container header-content">
+          <div className="logo">
+            <span className="logo-mark">PD</span>
+            <div>
+              <p className="logo-title">Piedmont Detailers</p>
+              <p className="logo-subtitle">Mobile Detailing • Triad, NC</p>
+            </div>
+          </div>
+          <nav className="nav desktop-nav">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  isActive ? 'nav-link active' : 'nav-link'
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+          <div className="header-actions">
+            <a className="btn btn-primary desktop-call-btn" href="tel:+13365550123">
+              Call Now
+            </a>
+            <button
+              className="mobile-menu-toggle"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? (
+                <HiX className="menu-icon" />
+              ) : (
+                <HiMenu className="menu-icon" />
+              )}
+            </button>
           </div>
         </div>
-        <nav className="nav">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              className={({ isActive }) =>
-                isActive ? 'nav-link active' : 'nav-link'
-              }
+        {/* Mobile Menu Backdrop */}
+        {mobileMenuOpen && (
+          <div
+            className="mobile-menu-backdrop"
+            onClick={closeMobileMenu}
+            aria-hidden="true"
+          />
+        )}
+        {/* Mobile Menu */}
+        <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+          <nav className="mobile-nav">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  isActive ? 'mobile-nav-link active' : 'mobile-nav-link'
+                }
+                onClick={closeMobileMenu}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+            <a
+              className="btn btn-primary mobile-call-btn"
+              href="tel:+13365550123"
+              onClick={closeMobileMenu}
             >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
-        <a className="btn btn-primary" href="tel:+13365550123">
-          Call Now
-        </a>
-      </div>
-    </header>
+              Call Now
+            </a>
+          </nav>
+        </div>
+      </header>
     <main>{children}</main>
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -88,7 +168,8 @@ const Layout = ({ children }: LayoutProps) => (
         <p>© 2025 Piedmont Detailers. All rights reserved.</p>
       </div>
     </footer>
-  </div>
-)
+    </div>
+  )
+}
 
 export default Layout

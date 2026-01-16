@@ -48,16 +48,16 @@ const Home = () => (
                 View Services
               </Link>
             </div>
-            <div className="grid grid-cols-3 gap-3 sm:gap-5">
+            <div className="grid grid-cols-3 gap-2 sm:gap-5">
               {highlights.map((item) => (
                 <div
                   key={item.label}
-                  className="bg-white/20 rounded-2xl p-6 sm:p-4 backdrop-blur-xl border border-white/30 transition-all duration-300 relative overflow-hidden hover:bg-white/30 hover:-translate-y-0.5 hover:shadow-lg"
+                  className="bg-white/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 backdrop-blur-xl border border-white/30 transition-all duration-300 relative overflow-hidden hover:bg-white/30 hover:-translate-y-0.5 hover:shadow-lg"
                 >
-                  <p className="text-3xl sm:text-4xl font-extrabold m-0 bg-gradient-to-br from-white to-white/90 bg-clip-text text-transparent leading-none">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold m-0 bg-gradient-to-br from-white to-white/90 bg-clip-text text-transparent leading-none break-words">
                     {item.value}
                   </p>
-                  <p className="mt-2 sm:mt-1.5 text-white/95 text-sm sm:text-xs font-medium tracking-wide">
+                  <p className="mt-1.5 sm:mt-2 text-white/95 text-xs sm:text-sm font-medium tracking-wide break-words">
                     {item.label}
                   </p>
                 </div>

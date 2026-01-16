@@ -39,51 +39,7 @@ export const serviceAreas = [
 ]
 
 export const seedGallery: GalleryItem[] = [
-  {
-    id: 'gallery-1',
-    title: 'Express Wash - Sedan',
-    packageType: 'Express Wash',
-    imageUrl:
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-    description:
-      'A quick refresh that restores a glossy finish and crisp glass.',
-  },
-  {
-    id: 'gallery-2',
-    title: 'Full Detail - SUV',
-    packageType: 'Full Detail',
-    imageUrl:
-      'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80',
-    description:
-      'Deep clean with a smooth, mirror-like exterior seal.',
-  },
-  {
-    id: 'gallery-3',
-    title: 'Interior Deep Clean - Truck',
-    packageType: 'Interior Deep Clean',
-    imageUrl:
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-    description:
-      'Odor removal and fabric extraction for a fresh cabin.',
-  },
-  {
-    id: 'gallery-4',
-    title: 'Paint Correction - Coupe',
-    packageType: 'Paint Correction',
-    imageUrl:
-      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-    description:
-      'Swirl-free finish with enhanced depth and clarity.',
-  },
-  {
-    id: 'gallery-5',
-    title: 'Ceramic Coating - Luxury',
-    packageType: 'Ceramic Coating',
-    imageUrl:
-      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80',
-    description:
-      'Durable protection that beads water and resists grime.',
-  },
+  // Intentionally empty: gallery items are managed via the Admin page and stored locally.
 ]
 
 export const seedBlogs: BlogPost[] = [

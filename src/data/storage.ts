@@ -30,7 +30,26 @@ const writeStorage = <T,>(key: string, value: T) => {
 }
 
 export const loadGallery = (): GalleryItem[] =>
-  readStorage(STORAGE_KEYS.gallery, seedGallery)
+  (() => {
+    const items = readStorage(STORAGE_KEYS.gallery, seedGallery)
+
+    // Migration: older versions seeded default gallery items with IDs gallery-1..gallery-5.
+    // If a user has only those legacy defaults stored, treat it as "empty gallery".
+    const legacyIds = new Set([
+      'gallery-1',
+      'gallery-2',
+      'gallery-3',
+      'gallery-4',
+      'gallery-5',
+    ])
+    const storedIds = new Set(items.map((item) => item.id))
+    const isLegacySeedOnly =
+      items.length === legacyIds.size &&
+      storedIds.size === legacyIds.size &&
+      items.every((item) => legacyIds.has(item.id))
+
+    return isLegacySeedOnly ? [] : items
+  })()
 
 export const saveGallery = (items: GalleryItem[]) =>
   writeStorage(STORAGE_KEYS.gallery, items)

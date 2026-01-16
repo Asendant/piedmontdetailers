@@ -98,7 +98,9 @@ const Gallery = () => {
             {filteredItems.length === 0 && (
               <div className="col-span-full text-center py-16 px-8 text-slate-500 bg-gradient-to-br from-slate-50 to-white rounded-3xl border-2 border-dashed border-primary-200">
                 <p className="text-lg m-0">
-                  No images found for this filter. Try selecting a different package type.
+                  {items.length === 0
+                    ? 'No gallery images yet.'
+                    : 'No images found for this filter. Try selecting a different package type.'}
                 </p>
               </div>
             )}

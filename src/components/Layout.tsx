@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
+import WelcomeModal from './WelcomeModal'
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -18,6 +19,7 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => (
   <div className="app">
+    <WelcomeModal />
     <header className="site-header">
       <div className="container header-content">
         <div className="logo">

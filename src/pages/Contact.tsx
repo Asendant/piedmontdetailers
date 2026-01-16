@@ -53,8 +53,8 @@ const Contact = () => {
             </p>
             <p>
               <strong>Email:</strong>{' '}
-              <a href="mailto:hello@piedmontdetailers.com">
-                hello@piedmontdetailers.com
+              <a href="mailto:business@piedmontdetailers.com">
+                business@piedmontdetailers.com
               </a>
             </p>
             <p><strong>Hours:</strong> Mon-Sat 8am-6pm</p>

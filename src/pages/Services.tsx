@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import { servicePackages } from '../data/seed'
+import { getServiceRoute } from '../utils/routes'
 
 const processSteps = [
   {
@@ -105,12 +106,12 @@ const Services = () => (
               <div className="mt-6 pt-4 border-t border-slate-200">
                 <Link
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-sm cursor-pointer no-underline transition-all duration-300 relative overflow-hidden bg-primary-500 text-white shadow-lg hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-xl w-full justify-center"
-                  to="/booking"
+                  to={getServiceRoute(pkg.title)}
                 >
-                  Book {pkg.title} Now
+                  Learn More About {pkg.title}
                 </Link>
                 <p className="text-center text-xs text-slate-500 mt-2">
-                  Or <Link to="/contact" className="text-primary-500 hover:underline font-semibold">contact us</Link> for a custom quote
+                  Or <Link to="/booking" className="text-primary-500 hover:underline font-semibold">book now</Link> or <Link to="/contact" className="text-primary-500 hover:underline font-semibold">contact us</Link> for a custom quote
                 </p>
               </div>
             </div>

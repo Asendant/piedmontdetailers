@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import { servicePackages } from '../data/seed'
 
@@ -22,17 +23,30 @@ const processSteps = [
 
 const Services = () => (
   <>
+    <Helmet>
+      <title>Car Detailing Packages Greensboro NC | Interior, Exterior & Full Wash | Piedmont Detailers</title>
+      <meta name="description" content="Professional car detailing packages in Greensboro, Winston-Salem & High Point. Choose Interior, Exterior, or Full Wash. Mobile service - we come to you. Book today!" />
+      <meta name="keywords" content="car detailing packages Greensboro NC, interior car detailing, exterior car wash, full detail service, mobile car detailing packages, professional car cleaning" />
+      <meta property="og:title" content="Car Detailing Packages Greensboro NC | Interior, Exterior & Full Wash" />
+      <meta property="og:description" content="Professional car detailing packages in Greensboro, Winston-Salem & High Point. Choose Interior, Exterior, or Full Wash. Mobile service - we come to you." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://piedmontdetailers.com/services" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Car Detailing Packages Greensboro NC | Piedmont Detailers" />
+      <meta name="twitter:description" content="Professional car detailing packages in Greensboro, Winston-Salem & High Point. Choose Interior, Exterior, or Full Wash." />
+      <link rel="canonical" href="https://piedmontdetailers.com/services" />
+    </Helmet>
     <SEO
-      title="Our Car Cleaning Packages"
-      description="Choose from 3 simple packages: Interior, Exterior, or Full Wash. We clean your car at your location."
-      keywords="car cleaning, car wash, interior cleaning, exterior cleaning, mobile car detailing, car detailing Greensboro, car detailing Winston-Salem"
+      title="Car Detailing Packages Greensboro NC | Interior, Exterior & Full Wash"
+      description="Professional car detailing packages in Greensboro, Winston-Salem & High Point. Choose Interior, Exterior, or Full Wash. Mobile service - we come to you. Book today!"
+      keywords="car detailing packages Greensboro NC, interior car detailing, exterior car wash, full detail service, mobile car detailing packages, professional car cleaning"
       url="/services"
     />
     <div className="flex flex-col gap-0">
     <section className="py-20 sm:py-12 md:py-16 bg-gradient-to-br from-primary-700 via-primary-500 via-primary-400 to-sky-300 text-white relative overflow-hidden">
       <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h1 className="text-4xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-white drop-shadow-lg">
-          Our Packages
+          Car Detailing Packages in the Piedmont Triad
         </h1>
         <p className="text-lg sm:text-base md:text-lg text-white/98 leading-relaxed max-w-3xl">
           Three simple options. Pick what you need.
@@ -52,15 +66,53 @@ const Services = () => (
               <h3 className="m-0 text-slate-800 text-2xl sm:text-xl md:text-2xl font-bold leading-tight mb-4">
                 {pkg.title}
               </h3>
-              <p className="text-slate-500 leading-relaxed m-0 text-base sm:text-sm md:text-base mb-6">
+              <p className="text-slate-500 leading-relaxed m-0 text-base sm:text-sm md:text-base mb-4">
                 {pkg.details}
               </p>
-              <Link
-                className="mt-auto text-primary-500 no-underline font-bold text-base sm:text-sm md:text-base transition-all duration-300 inline-flex items-center gap-2 hover:text-primary-700 hover:gap-3"
-                to="/booking"
-              >
-                Book This Service →
-              </Link>
+              {'includes' in pkg && pkg.includes && (
+                <div className="mb-4">
+                  <h4 className="text-slate-800 font-bold text-sm mb-2">What's Included:</h4>
+                  <ul className="space-y-1.5 mb-4">
+                    {pkg.includes.map((item, idx) => (
+                      <li key={idx} className="text-slate-600 text-sm flex items-start">
+                        <span className="text-primary-500 mr-2 font-bold">✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {'benefits' in pkg && pkg.benefits && (
+                <div className="mb-4 p-3 bg-primary-50 rounded-lg">
+                  <h4 className="text-slate-800 font-bold text-sm mb-2">Benefits:</h4>
+                  <ul className="space-y-1">
+                    {pkg.benefits.map((benefit, idx) => (
+                      <li key={idx} className="text-slate-700 text-sm">
+                        • {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className="mt-4 pt-4 border-t border-slate-200">
+                <p className="text-slate-600 text-sm mb-2">
+                  <strong className="text-slate-800">Starting at:</strong> Contact us for a custom quote based on your vehicle size and specific needs.
+                </p>
+                <p className="text-slate-500 text-xs">
+                  Transparent pricing with no hidden fees. We'll provide a detailed quote before you book.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-slate-200">
+                <Link
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-sm cursor-pointer no-underline transition-all duration-300 relative overflow-hidden bg-primary-500 text-white shadow-lg hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-xl w-full justify-center"
+                  to="/booking"
+                >
+                  Book {pkg.title} Now
+                </Link>
+                <p className="text-center text-xs text-slate-500 mt-2">
+                  Or <Link to="/contact" className="text-primary-500 hover:underline font-semibold">contact us</Link> for a custom quote
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -71,10 +123,10 @@ const Services = () => (
       <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-14 sm:mb-8 max-w-3xl">
           <h2 className="text-4xl sm:text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-slate-800 tracking-tight">
-            How It Works
+            How Our Mobile Car Detailing Process Works
           </h2>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed font-normal">
-            Simple. Easy. Done.
+            Simple. Easy. Done. We make professional car detailing convenient for residents of Greensboro, Winston-Salem, High Point, and the entire Piedmont Triad. <Link to="/about" className="text-primary-500 hover:underline font-semibold">Learn more about us</Link> or <Link to="/contact" className="text-primary-500 hover:underline font-semibold">contact us</Link> with questions.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

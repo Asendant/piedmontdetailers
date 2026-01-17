@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import { servicePackages, serviceAreas } from '../data/seed'
 import type { PackageType } from '../types'
@@ -158,9 +159,18 @@ const Booking = () => {
   if (submitted) {
     return (
       <>
+        <Helmet>
+          <title>Booking Confirmed | Piedmont Detailers | Piedmont Detailers</title>
+          <meta name="description" content="Your mobile car detailing booking request has been submitted. We'll confirm your appointment within 24 hours via phone or email." />
+          <meta property="og:title" content="Booking Confirmed | Piedmont Detailers" />
+          <meta property="og:description" content="Your mobile car detailing booking request has been submitted. We'll confirm your appointment within 24 hours." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://piedmontdetailers.com/booking" />
+          <link rel="canonical" href="https://piedmontdetailers.com/booking" />
+        </Helmet>
         <SEO
-          title="Booking Confirmed"
-          description="Your booking request has been submitted successfully. We'll confirm your appointment within 24 hours."
+          title="Booking Confirmed | Piedmont Detailers"
+          description="Your mobile car detailing booking request has been submitted. We'll confirm your appointment within 24 hours via phone or email."
           url="/booking"
         />
         <div className="flex flex-col gap-0">
@@ -215,10 +225,23 @@ const Booking = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Book Mobile Car Detailing Online | Piedmont Detailers Greensboro NC | Piedmont Detailers</title>
+        <meta name="description" content="Book your mobile car detailing service online. Choose Interior, Exterior, or Full Wash package. We come to your home or office in Greensboro, Winston-Salem, High Point & surrounding areas." />
+        <meta name="keywords" content="book car detailing online, schedule mobile detailing, car detailing appointment Greensboro, online booking car wash, mobile detailer booking" />
+        <meta property="og:title" content="Book Mobile Car Detailing Online | Piedmont Detailers" />
+        <meta property="og:description" content="Book your mobile car detailing service online. Choose Interior, Exterior, or Full Wash package. We come to your home or office." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://piedmontdetailers.com/booking" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Book Mobile Car Detailing Online | Piedmont Detailers" />
+        <meta name="twitter:description" content="Book your mobile car detailing service online. Choose Interior, Exterior, or Full Wash package." />
+        <link rel="canonical" href="https://piedmontdetailers.com/booking" />
+      </Helmet>
       <SEO
-      title="Book Your Service"
-      description="Schedule your car cleaning service. Choose a package, pick a date and time, and we'll come to you."
-      keywords="book car cleaning, schedule car wash, mobile detailing appointment, online booking"
+      title="Book Mobile Car Detailing Online | Piedmont Detailers Greensboro NC"
+      description="Book your mobile car detailing service online. Choose Interior, Exterior, or Full Wash package. We come to your home or office in Greensboro, Winston-Salem, High Point & surrounding areas."
+      keywords="book car detailing online, schedule mobile detailing, car detailing appointment Greensboro, online booking car wash, mobile detailer booking"
         url="/booking"
       />
       {showNotAvailableModal && (

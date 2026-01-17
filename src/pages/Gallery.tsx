@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import { loadGallery, saveGallery } from '../data/storage'
 import { useStoredState } from '../hooks/useStoredState'
@@ -23,10 +24,23 @@ const Gallery = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Car Detailing Before & After Gallery | Piedmont Detailers Greensboro NC | Piedmont Detailers</title>
+        <meta name="description" content="View real before and after photos from our mobile car detailing work in Greensboro, Winston-Salem, and High Point. See the quality difference we deliver." />
+        <meta name="keywords" content="car detailing before after photos, detailing gallery Greensboro, mobile detailing results, car cleaning gallery, professional detailing photos" />
+        <meta property="og:title" content="Car Detailing Before & After Gallery | Piedmont Detailers" />
+        <meta property="og:description" content="View real before and after photos from our mobile car detailing work in Greensboro, Winston-Salem, and High Point." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://piedmontdetailers.com/gallery" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Car Detailing Before & After Gallery | Piedmont Detailers" />
+        <meta name="twitter:description" content="View real before and after photos from our mobile car detailing work in Greensboro, Winston-Salem, and High Point." />
+        <link rel="canonical" href="https://piedmontdetailers.com/gallery" />
+      </Helmet>
       <SEO
-      title="Our Work Gallery"
-      description="See examples of our car cleaning work. Filter by package type to see specific results."
-      keywords="car cleaning gallery, detailing results, car detailing photos, mobile detailing gallery"
+      title="Car Detailing Before & After Gallery | Piedmont Detailers Greensboro NC"
+      description="View real before and after photos from our mobile car detailing work in Greensboro, Winston-Salem, and High Point. See the quality difference we deliver."
+      keywords="car detailing before after photos, detailing gallery Greensboro, mobile detailing results, car cleaning gallery, professional detailing photos"
         url="/gallery"
       />
       <div className="flex flex-col gap-0">
@@ -34,7 +48,7 @@ const Gallery = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-sky-300/5 pointer-events-none" />
         <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="text-4xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-slate-800">
-            Our Work
+            Car Detailing Before & After Gallery
           </h1>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed max-w-3xl mb-8">
             See examples of our work. Filter by package type to see specific results.
@@ -73,8 +87,9 @@ const Gallery = () => {
               >
                 <img
                   src={item.imageUrl}
-                  alt={item.title}
+                  alt={`${item.packageType} - ${item.title} - Before and after car detailing results from Piedmont Detailers`}
                   className="w-full h-[220px] sm:h-[200px] object-cover transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="p-6">
                   <span className="inline-block bg-gradient-to-br from-blue-100 to-cyan-100 text-primary-700 px-4 py-1.5 rounded-full text-xs font-bold mb-3 border border-primary-200 shadow-sm">

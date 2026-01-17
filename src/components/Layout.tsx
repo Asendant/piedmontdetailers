@@ -1,6 +1,7 @@
 import { useState, useEffect, type ReactNode } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { HiMenu, HiX } from 'react-icons/hi'
+import { FaFacebook, FaInstagram, FaGoogle } from 'react-icons/fa'
 import WelcomeModal from './WelcomeModal'
 
 const navItems = [
@@ -165,31 +166,85 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 text-center md:text-left">
             <div>
               <h4 className="text-lg font-bold mb-2">Piedmont Detailers</h4>
-              <p className="text-white/95 text-sm leading-relaxed">
+              <p className="text-white/95 text-sm leading-relaxed mb-4">
                 Premium mobile detailing across the Piedmont Triad. We bring the
                 shop to you with professional-grade tools and products.
               </p>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.facebook.com/piedmontdetailers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/95 hover:text-white transition-colors"
+                  aria-label="Facebook"
+                >
+                  <FaFacebook className="text-xl" />
+                </a>
+                <a
+                  href="https://www.instagram.com/piedmontdetailers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/95 hover:text-white transition-colors"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="text-xl" />
+                </a>
+                <a
+                  href="https://www.google.com/maps/place/Piedmont+Detailers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/95 hover:text-white transition-colors"
+                  aria-label="Google Business"
+                >
+                  <FaGoogle className="text-xl" />
+                </a>
+              </div>
             </div>
             <div>
-              <h4 className="text-lg font-bold mb-2">Service Area</h4>
-              <p className="text-white/95 text-sm leading-relaxed mb-2">
-                All counties within the Piedmont Triad region of North Carolina.
-              </p>
-              <p className="text-white/95 text-sm leading-relaxed">
-                <strong>Hours:</strong> Mon-Sat 8am-6pm
+              <h4 className="text-lg font-bold mb-2">Service Areas</h4>
+              <ul className="text-white/95 text-sm leading-relaxed space-y-1">
+                <li>Greensboro, NC</li>
+                <li>Winston-Salem, NC</li>
+                <li>High Point, NC</li>
+                <li>Guilford County</li>
+                <li>Forsyth County</li>
+                <li>Davidson County</li>
+                <li>Randolph County</li>
+                <li>Stokes County</li>
+                <li>Surry County</li>
+                <li>Yadkin County</li>
+              </ul>
+              <p className="text-white/95 text-sm leading-relaxed mt-3">
+                <strong>Hours:</strong> Monday - Saturday, 8am - 6pm
                 <br />
                 <strong>Phone:</strong>{' '}
                 <a
-                  href="tel:+13365550123"
+                  href="tel:+13363109061"
                   className="underline hover:text-white"
                 >
-                  (336) 555-0123
+                  (336) 310-9061
+                </a>
+                <br />
+                <strong>Email:</strong>{' '}
+                <a
+                  href="mailto:business@piedmontdetailers.com"
+                  className="underline hover:text-white"
+                >
+                  business@piedmontdetailers.com
                 </a>
               </p>
             </div>
             <div>
               <h4 className="text-lg font-bold mb-2">Quick Links</h4>
               <ul className="flex flex-col gap-2 justify-center md:justify-start">
+                <li>
+                  <NavLink
+                    to="/services"
+                    className="text-white/95 hover:text-white hover:underline transition-colors duration-200"
+                  >
+                    Services
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink
                     to="/gallery"
@@ -200,17 +255,42 @@ const Layout = ({ children }: LayoutProps) => {
                 </li>
                 <li>
                   <NavLink
+                    to="/about"
+                    className="text-white/95 hover:text-white hover:underline transition-colors duration-200"
+                  >
+                    About Us
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
                     to="/contact"
                     className="text-white/95 hover:text-white hover:underline transition-colors duration-200"
                   >
                     Contact
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/booking"
+                    className="text-white/95 hover:text-white hover:underline transition-colors duration-200"
+                  >
+                    Book Online
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>
           <div className="mt-6 border-t border-white/30 pt-4 text-center text-sm text-white/90">
-            <p>© 2025 Piedmont Detailers. All rights reserved.</p>
+            <p className="mb-2">© 2025 Piedmont Detailers. All rights reserved.</p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link to="/privacy" className="text-white/90 hover:text-white hover:underline">
+                Privacy Policy
+              </Link>
+              <span className="text-white/50">|</span>
+              <Link to="/terms" className="text-white/90 hover:text-white hover:underline">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

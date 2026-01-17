@@ -9,7 +9,9 @@ import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import Privacy from './pages/Privacy'
 import Services from './pages/Services'
+import Terms from './pages/Terms'
 import Videos from './pages/Videos'
 
 const App = () => (
@@ -25,6 +27,8 @@ const App = () => (
       <Route path="/contact" element={<Contact />} />
       <Route path="/booking" element={<BookingPage />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/privacy" element={<Privacy />} />
+      <Route path="/terms" element={<Terms />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Layout>

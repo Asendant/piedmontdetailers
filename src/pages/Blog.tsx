@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import { loadBlogs } from '../data/storage'
 
@@ -7,10 +9,23 @@ const Blog = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Car Detailing Tips & Blog | Piedmont Detailers Greensboro NC | Piedmont Detailers</title>
+        <meta name="description" content="Expert car care tips and detailing advice from Piedmont Detailers. Learn how to maintain your vehicle between professional details in Greensboro, Winston-Salem, and High Point." />
+        <meta name="keywords" content="car detailing tips, car care blog, vehicle maintenance advice, detailing guides, car cleaning tips Greensboro" />
+        <meta property="og:title" content="Car Detailing Tips & Blog | Piedmont Detailers" />
+        <meta property="og:description" content="Expert car care tips and detailing advice from Piedmont Detailers. Learn how to maintain your vehicle between professional details." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://piedmontdetailers.com/blog" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Car Detailing Tips & Blog | Piedmont Detailers" />
+        <meta name="twitter:description" content="Expert car care tips and detailing advice from Piedmont Detailers." />
+        <link rel="canonical" href="https://piedmontdetailers.com/blog" />
+      </Helmet>
       <SEO
-        title="Detailing Blog"
-        description="Tips, guides, and insights from Piedmont Detailers. Learn how to keep your vehicle looking its best between details."
-        keywords="car detailing blog, detailing tips, ceramic coating tips, paint correction advice, interior detailing guides"
+        title="Car Detailing Tips & Blog | Piedmont Detailers Greensboro NC"
+        description="Expert car care tips and detailing advice from Piedmont Detailers. Learn how to maintain your vehicle between professional details in Greensboro, Winston-Salem, and High Point."
+        keywords="car detailing tips, car care blog, vehicle maintenance advice, detailing guides, car cleaning tips Greensboro"
         url="/blog"
       />
       <div className="flex flex-col gap-0">
@@ -46,12 +61,12 @@ const Blog = () => {
                     {post.coverImage ? (
                       <img
                         src={post.coverImage}
-                        alt={post.title}
+                        alt={`${post.title} - Car detailing tips and advice from Piedmont Detailers`}
                         className="w-full h-[200px] object-cover transition-transform duration-300 hover:scale-105"
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full h-[200px] bg-gradient-to-br from-primary-500/10 to-sky-300/10" />
+                      <div className="w-full h-[200px] bg-gradient-to-br from-primary-500/10 to-sky-300/10" aria-label="Blog post image placeholder" />
                     )}
                     <div className="p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
@@ -70,9 +85,17 @@ const Blog = () => {
                       <p className="text-slate-500 leading-relaxed my-2 text-sm sm:text-xs md:text-sm m-0">
                         {post.excerpt}
                       </p>
-                      <p className="text-slate-400 text-xs mt-4 m-0">
-                        {post.date} • {post.author}
-                      </p>
+                      <div className="mt-4 flex items-center justify-between">
+                        <p className="text-slate-400 text-xs m-0">
+                          {post.date} • {post.author}
+                        </p>
+                        <Link
+                          to="/services"
+                          className="text-primary-500 hover:text-primary-700 text-xs font-semibold"
+                        >
+                          View Services →
+                        </Link>
+                      </div>
                     </div>
                   </article>
                 ))}

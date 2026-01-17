@@ -1,13 +1,31 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
+import FAQ from '../components/FAQ'
+import TrustSignals from '../components/TrustSignals'
+import Testimonials from '../components/Testimonials'
+import EmailCapture from '../components/EmailCapture'
 import { serviceAreas, servicePackages } from '../data/seed'
 
 const Home = () => (
   <>
+    <Helmet>
+      <title>Mobile Car Detailing Greensboro NC | Piedmont Triad | Piedmont Detailers</title>
+      <meta name="description" content="Professional mobile car detailing in Greensboro, Winston-Salem, and High Point. We come to you with 3 simple packages. Book your detail today - same week availability!" />
+      <meta name="keywords" content="mobile car detailing Greensboro NC, car detailing Winston-Salem, mobile detailer High Point, car wash Piedmont Triad, professional car cleaning, mobile auto detailing" />
+      <meta property="og:title" content="Mobile Car Detailing Greensboro NC | We Come to You" />
+      <meta property="og:description" content="Professional mobile car detailing in Greensboro, Winston-Salem, and High Point. We come to you with 3 simple packages." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://piedmontdetailers.com/" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Mobile Car Detailing Greensboro NC | Piedmont Detailers" />
+      <meta name="twitter:description" content="Professional mobile car detailing in Greensboro, Winston-Salem, and High Point. We come to you with 3 simple packages." />
+      <link rel="canonical" href="https://piedmontdetailers.com/" />
+    </Helmet>
     <SEO
-      title="Mobile Car Detailing in the Piedmont Triad"
-      description="We clean your car at your home or office. Choose from 3 simple packages: Interior, Exterior, or Full Wash. We bring everything we need."
-      keywords="mobile car detailing, Piedmont Triad, car wash, mobile detailer, car cleaning, Greensboro car detailing, Winston-Salem car detailing, High Point car detailing"
+      title="Mobile Car Detailing Greensboro NC | Piedmont Triad"
+      description="Professional mobile car detailing in Greensboro, Winston-Salem, and High Point. We come to you with 3 simple packages. Book your detail today - same week availability!"
+      keywords="mobile car detailing Greensboro NC, car detailing Winston-Salem, mobile detailer High Point, car wash Piedmont Triad, professional car cleaning, mobile auto detailing"
       url="/"
     />
     <div className="flex flex-col gap-0">
@@ -16,7 +34,7 @@ const Home = () => (
         <div className="grid gap-8 md:gap-6 lg:grid-cols-2 items-center">
           <div>
             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 tracking-tight text-white drop-shadow-lg">
-              We Clean Your Car. You Stay Home.
+              Mobile Car Detailing Greensboro NC We Come to You
             </h1>
             <p className="text-lg sm:text-base md:text-lg text-white/98 mb-6 leading-relaxed font-normal">
               Choose from 3 simple packages. We come to your home or office with everything we need.
@@ -70,7 +88,7 @@ const Home = () => (
       <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-14 sm:mb-8 max-w-3xl">
           <h2 className="text-4xl sm:text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-slate-800 tracking-tight">
-            Choose Your Package
+            Professional Car Detailing Packages in the Piedmont Triad
           </h2>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed font-normal">
             Three simple options. Pick what you need.
@@ -86,7 +104,7 @@ const Home = () => (
                 {String(index + 1).padStart(2, '0')}
               </div>
               <h3 className="mt-4 sm:mt-2 text-slate-800 text-2xl sm:text-xl md:text-2xl font-bold leading-tight mb-4">
-                {pkg.title}
+                {pkg.title} - Professional Car Detailing Service
               </h3>
               <p className="text-slate-500 leading-relaxed text-base sm:text-sm md:text-base mb-6">
                 {pkg.details}
@@ -108,10 +126,10 @@ const Home = () => (
       <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-14 sm:mb-8 max-w-3xl">
           <h2 className="text-4xl sm:text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-slate-800 tracking-tight">
-            We Serve the Piedmont Triad
+            Mobile Car Detailing Service Areas: Greensboro, Winston-Salem & High Point
           </h2>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed font-normal">
-            We come to you anywhere in the region.
+            We come to you anywhere in the region. <Link to="/contact" className="text-primary-500 hover:underline font-semibold">Contact us</Link> to see if we serve your area, or <Link to="/services" className="text-primary-500 hover:underline font-semibold">view our service packages</Link>.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-4">
@@ -139,7 +157,7 @@ const Home = () => (
           <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-radial-gradient from-white/10 via-transparent to-transparent animate-pulse" />
           <div className="relative z-10 flex-1 min-w-[300px]">
             <h2 className="text-4xl sm:text-3xl md:text-5xl font-extrabold mb-4 leading-tight drop-shadow-lg">
-              Ready to Book?
+              Book Your Mobile Car Detailing Service Today
             </h2>
             <p className="text-xl sm:text-lg md:text-xl leading-relaxed text-white/95 max-w-2xl">
               Call us or book online. We'll come to your location and clean your car.
@@ -162,6 +180,11 @@ const Home = () => (
         </div>
       </div>
     </section>
+
+    <TrustSignals />
+    <Testimonials />
+    <FAQ />
+    <EmailCapture />
   </div>
   </>
 )

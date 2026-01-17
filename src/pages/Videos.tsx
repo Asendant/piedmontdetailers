@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 import { loadVideos } from '../data/storage'
 
@@ -7,10 +8,23 @@ const Videos = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Car Detailing Process Videos | Piedmont Detailers | Piedmont Detailers</title>
+        <meta name="description" content="Watch our mobile car detailing process in action. See how we clean interiors, wash exteriors, and deliver professional results in the Piedmont Triad area." />
+        <meta name="keywords" content="car detailing videos, mobile detailing process, detailing walkthrough, car cleaning videos, professional detailing videos" />
+        <meta property="og:title" content="Car Detailing Process Videos | Piedmont Detailers" />
+        <meta property="og:description" content="Watch our mobile car detailing process in action. See how we clean interiors, wash exteriors, and deliver professional results." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://piedmontdetailers.com/videos" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Car Detailing Process Videos | Piedmont Detailers" />
+        <meta name="twitter:description" content="Watch our mobile car detailing process in action. See how we clean interiors, wash exteriors, and deliver professional results." />
+        <link rel="canonical" href="https://piedmontdetailers.com/videos" />
+      </Helmet>
       <SEO
-        title="Detailing Videos"
-        description="Watch quick walkthroughs and results from Piedmont Detailers. See our process for interior deep cleans, paint correction, and more."
-        keywords="car detailing videos, interior detailing video, paint correction video, ceramic coating video"
+        title="Car Detailing Process Videos | Piedmont Detailers"
+        description="Watch our mobile car detailing process in action. See how we clean interiors, wash exteriors, and deliver professional results in the Piedmont Triad area."
+        keywords="car detailing videos, mobile detailing process, detailing walkthrough, car cleaning videos, professional detailing videos"
         url="/videos"
       />
       <div className="flex flex-col gap-0">

@@ -41,6 +41,15 @@ const SEO = ({
       element.setAttribute('content', content)
     }
 
+    // Canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]')
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link')
+      canonicalLink.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonicalLink)
+    }
+    canonicalLink.setAttribute('href', fullUrl)
+
     // Basic meta tags
     updateMetaTag('description', description)
     updateMetaTag('keywords', keywords)
@@ -170,31 +179,52 @@ const SEO = ({
       description: description,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Car Detailing Services',
+        name: 'Mobile Car Detailing Services',
         itemListElement: [
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
               name: 'Interior Package',
-              description: 'We clean the inside of your car',
+              description: 'Complete interior cleaning service including vacuum, surface cleaning, window cleaning, and trash removal',
+              serviceType: 'Interior Car Detailing',
+              areaServed: {
+                '@type': 'State',
+                name: 'North Carolina',
+              },
             },
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
               name: 'Exterior Package',
-              description: 'We wash the outside of your car',
+              description: 'Professional exterior wash and protection service with hand wash, wheel cleaning, and paint protection',
+              serviceType: 'Exterior Car Detailing',
+              areaServed: {
+                '@type': 'State',
+                name: 'North Carolina',
+              },
             },
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
               name: 'Full Wash Package',
-              description: 'We clean everything - inside and outside',
+              description: 'Complete inside and outside detailing service combining both Interior and Exterior packages',
+              serviceType: 'Full Car Detailing',
+              areaServed: {
+                '@type': 'State',
+                name: 'North Carolina',
+              },
             },
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
           },
         ],
       },
@@ -215,7 +245,7 @@ const SEO = ({
       logo: `${siteUrl}/logo.png`, // Update with your logo URL
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+13365550123',
+        telephone: '+13363109061',
         contactType: 'Customer Service',
         areaServed: 'US',
         availableLanguage: 'English',

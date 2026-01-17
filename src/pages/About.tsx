@@ -1,11 +1,26 @@
+import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
 
 const About = () => (
   <>
+    <Helmet>
+      <title>About Piedmont Detailers | Local Car Detailing Team Greensboro NC | Piedmont Detailers</title>
+      <meta name="description" content="Meet Piedmont Detailers - your local mobile car detailing team serving Greensboro, Winston-Salem, and High Point. Licensed, insured, and committed to quality service." />
+      <meta name="keywords" content="about piedmont detailers, local car detailer Greensboro, mobile detailing team, professional car cleaning service, Piedmont Triad detailers" />
+      <meta property="og:title" content="About Piedmont Detailers | Local Car Detailing Team Greensboro NC" />
+      <meta property="og:description" content="Meet Piedmont Detailers - your local mobile car detailing team serving Greensboro, Winston-Salem, and High Point. Licensed, insured, and committed to quality service." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://piedmontdetailers.com/about" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="About Piedmont Detailers | Local Car Detailing Team" />
+      <meta name="twitter:description" content="Meet Piedmont Detailers - your local mobile car detailing team serving Greensboro, Winston-Salem, and High Point." />
+      <link rel="canonical" href="https://piedmontdetailers.com/about" />
+    </Helmet>
     <SEO
-      title="About Us"
-      description="We're a local team that cleans cars. We come to you with everything we need. Simple service, good results."
-      keywords="about piedmont detailers, mobile car cleaning, local detailer, Piedmont Triad"
+      title="About Piedmont Detailers | Local Car Detailing Team Greensboro NC"
+      description="Meet Piedmont Detailers - your local mobile car detailing team serving Greensboro, Winston-Salem, and High Point. Licensed, insured, and committed to quality service."
+      keywords="about piedmont detailers, local car detailer Greensboro, mobile detailing team, professional car cleaning service, Piedmont Triad detailers"
       url="/about"
     />
     <div className="flex flex-col gap-0">
@@ -15,13 +30,13 @@ const About = () => (
         <div className="max-w-4xl">
           <div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight my-6 tracking-tight text-white drop-shadow-lg">
-              About Us
+              About Piedmont Detailers
             </h1>
             <p className="text-xl sm:text-lg md:text-xl leading-relaxed my-8 text-white/98 font-normal">
-              We're a local team that cleans cars. We come to you, bring everything we need, and make your car look great.
+              We're a locally owned and operated mobile car detailing business serving the Piedmont Triad region. Founded with a simple mission: make professional car care convenient and accessible for everyone in our community.
             </p>
             <p className="text-white/95 leading-relaxed my-6 text-lg sm:text-base md:text-lg">
-              Simple service. No complicated options. Just pick a package, book a time, and we'll take care of the rest.
+              As residents of the Triad ourselves, we understand the value of your time. That's why we bring our professional-grade equipment, premium products, and expertise directly to your home or office. No complicated options, no hidden fees—just honest service that makes your car look great.
             </p>
           </div>
         </div>
@@ -77,10 +92,10 @@ const About = () => (
         <div className="max-w-4xl mx-auto">
           <div className="mb-14 sm:mb-8 max-w-3xl">
             <h2 className="text-4xl sm:text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-slate-800 tracking-tight">
-              Why Choose Us
+              Why Choose Piedmont Detailers for Mobile Car Detailing
             </h2>
             <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed font-normal">
-              Simple packages. Easy booking. Good results.
+              Simple packages. Easy booking. Good results. We're your trusted local mobile car detailing team serving the Piedmont Triad. <Link to="/services" className="text-primary-500 hover:underline font-semibold">View our packages</Link> or <Link to="/gallery" className="text-primary-500 hover:underline font-semibold">see our work</Link>.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-6">

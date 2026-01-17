@@ -69,7 +69,7 @@ const Booking = () => {
     address: '',
     city: '',
     county: '',
-    service: 'Full Detail' as PackageType,
+    service: 'Full Wash Package' as PackageType,
     date: '',
     time: '',
     vehicle: '',
@@ -216,9 +216,9 @@ const Booking = () => {
   return (
     <>
       <SEO
-        title="Book Your Mobile Detailing Service"
-        description="Schedule your mobile car detailing service. Choose your service, date, and location. We'll confirm your appointment and arrive fully equipped at your location."
-        keywords="book car detailing, schedule detailing, mobile detailing appointment, online booking, car detailing booking"
+      title="Book Your Service"
+      description="Schedule your car cleaning service. Choose a package, pick a date and time, and we'll come to you."
+      keywords="book car cleaning, schedule car wash, mobile detailing appointment, online booking"
         url="/booking"
       />
       {showNotAvailableModal && (
@@ -264,15 +264,11 @@ const Booking = () => {
       <section className="py-20 sm:py-12 md:py-16 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-sky-300/5 pointer-events-none" />
         <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="uppercase tracking-widest text-xs sm:text-sm text-primary-500 mb-4 font-bold inline-block px-4 py-2 bg-primary-500/10 rounded-full border border-primary-500/20">
-            Book Your Detail
-          </p>
           <h1 className="text-4xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-slate-800">
-            Schedule Your Mobile Detailing Service
+            Book Your Service
           </h1>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed max-w-3xl">
-            Choose your service, date, and location. We'll confirm your appointment
-            and arrive fully equipped at your location.
+            Pick a package, choose a date and time, and tell us where to go. We'll confirm and show up ready to clean.
           </p>
         </div>
       </section>

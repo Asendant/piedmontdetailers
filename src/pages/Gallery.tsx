@@ -5,11 +5,9 @@ import { useStoredState } from '../hooks/useStoredState'
 import type { PackageType } from '../types'
 
 const packageLabels: PackageType[] = [
-  'Express Wash',
-  'Full Detail',
-  'Interior Deep Clean',
-  'Paint Correction',
-  'Ceramic Coating',
+  'Interior Package',
+  'Exterior Package',
+  'Full Wash Package',
 ]
 
 const Gallery = () => {
@@ -26,24 +24,20 @@ const Gallery = () => {
   return (
     <>
       <SEO
-        title="Detailing Gallery - Before & After Results"
-        description="Browse real results from our mobile detailing team across the Piedmont Triad. See the quality and attention to detail we bring to every vehicle."
-        keywords="car detailing gallery, before and after detailing, detailing results, car detailing photos, mobile detailing gallery"
+      title="Our Work Gallery"
+      description="See examples of our car cleaning work. Filter by package type to see specific results."
+      keywords="car cleaning gallery, detailing results, car detailing photos, mobile detailing gallery"
         url="/gallery"
       />
       <div className="flex flex-col gap-0">
       <section className="py-20 sm:py-12 md:py-16 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-sky-300/5 pointer-events-none" />
         <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="uppercase tracking-widest text-xs sm:text-sm text-primary-500 mb-4 font-bold inline-block px-4 py-2 bg-primary-500/10 rounded-full border border-primary-500/20">
-            Project Highlights
-          </p>
           <h1 className="text-4xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-slate-800">
-            Gallery by Detail Package
+            Our Work
           </h1>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed max-w-3xl mb-8">
-            Browse real results from our mobile detailing team across the
-            Piedmont Triad. See the quality and attention to detail we bring to every vehicle.
+            See examples of our work. Filter by package type to see specific results.
           </p>
           <div className="mt-8 grid gap-4">
             <span className="font-bold text-slate-800 text-base">Filter:</span>

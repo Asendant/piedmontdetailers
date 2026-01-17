@@ -8,24 +8,20 @@ const Contact = () => {
   return (
     <>
       <SEO
-        title="Contact Us - Book Your Mobile Detail"
-        description="Contact Piedmont Detailers to schedule your mobile car detailing service. We come to you anywhere in the Piedmont Triad. Call (336) 555-0123 or request a quote online."
-        keywords="contact piedmont detailers, book car detailing, mobile detailing quote, Piedmont Triad detailer contact, car detailing Greensboro, car detailing Winston-Salem, car detailing High Point, mobile car detailing contact"
+      title="Contact Us"
+      description="Contact us to book your car cleaning service. Call (336) 555-0123 or send us a message."
+      keywords="contact piedmont detailers, book car cleaning, car detailing contact, Piedmont Triad"
         url="/contact"
       />
       <div className="flex flex-col gap-0">
       <section className="py-20 sm:py-12 md:py-16 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-sky-300/5 pointer-events-none" />
         <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="uppercase tracking-widest text-xs sm:text-sm text-primary-500 mb-4 font-bold inline-block px-4 py-2 bg-primary-500/10 rounded-full border border-primary-500/20">
-            Book Your Detail
-          </p>
           <h1 className="text-4xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight text-slate-800">
-            We Come to You Anywhere in the Triad
+            Contact Us
           </h1>
           <p className="text-lg sm:text-base md:text-lg text-slate-500 leading-relaxed max-w-3xl">
-            Tell us about your vehicle and we will respond with availability
-            and a custom quote. Our mobile service makes it easy to get professional detailing without leaving your home or office.
+            Call us or fill out the form below. We'll get back to you quickly.
           </p>
         </div>
       </section>
@@ -56,12 +52,12 @@ const Contact = () => {
             <div className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-8 shadow-md border-2 border-transparent relative overflow-hidden transition-all duration-300 flex flex-col gap-4 hover:-translate-y-1 hover:shadow-xl hover:border-primary-200">
               <div className="absolute top-0 left-0 right-0 h-0.75 bg-gradient-to-r from-primary-500 via-primary-400 to-sky-300 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100" />
               <h3 className="text-2xl sm:text-xl md:text-2xl font-bold text-slate-800 m-0 leading-tight">
-                Contact Details
+                Get in Touch
               </h3>
               <p className="text-slate-600 leading-relaxed m-0 text-base">
                 <strong className="text-slate-800">Phone:</strong>{' '}
-                <a href="tel:+13365550123" className="text-primary-600 hover:text-primary-700 underline">
-                  (336) 555-0123
+                <a href="tel:+3363109061" className="text-primary-600 hover:text-primary-700 underline">
+                  (336) 310-9061
                 </a>
               </p>
               <p className="text-slate-600 leading-relaxed m-0 text-base">
@@ -74,10 +70,7 @@ const Contact = () => {
                 </a>
               </p>
               <p className="text-slate-600 leading-relaxed m-0 text-base">
-                <strong className="text-slate-800">Hours:</strong> Mon-Sat 8am-6pm
-              </p>
-              <p className="text-slate-600 leading-relaxed m-0 text-base">
-                <strong className="text-slate-800">Service Area:</strong> All counties within the Piedmont Triad region of North Carolina.
+                <strong className="text-slate-800">Hours:</strong> Monday - Saturday, 8am - 6pm
               </p>
               <div className="mt-6">
                 <Link
@@ -97,7 +90,7 @@ const Contact = () => {
             >
               <div className="absolute top-0 left-0 right-0 h-0.75 bg-gradient-to-r from-primary-500 via-primary-400 to-sky-300 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100" />
               <h3 className="text-2xl sm:text-xl md:text-2xl font-bold text-slate-800 m-0 leading-tight">
-                Request a Quote
+                Send Us a Message
               </h3>
               <label className="grid gap-2.5 font-semibold text-slate-800 text-sm">
                 Full name
@@ -130,14 +123,12 @@ const Contact = () => {
                 Service needed
                 <select
                   name="service"
-                  defaultValue="Full Detail"
+                  defaultValue="Full Wash Package"
                   className="w-full px-5 py-3.5 rounded-2xl border-2 border-slate-200 text-base transition-all duration-300 bg-white text-slate-800 font-normal hover:border-slate-300 focus:outline-none focus:border-primary-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)]"
                 >
-                  <option>Express Wash</option>
-                  <option>Full Detail</option>
-                  <option>Interior Deep Clean</option>
-                  <option>Paint Correction</option>
-                  <option>Ceramic Coating</option>
+                  <option>Interior Package</option>
+                  <option>Exterior Package</option>
+                  <option>Full Wash Package</option>
                 </select>
               </label>
               <label className="grid gap-2.5 font-semibold text-slate-800 text-sm">

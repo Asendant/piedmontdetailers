@@ -2,29 +2,19 @@ import type { BlogPost, GalleryItem, PackageType, VideoItem } from '../types'
 
 export const servicePackages: { title: PackageType; details: string }[] = [
   {
-    title: 'Express Wash',
+    title: 'Interior Package',
     details:
-      'Quick wash, wheels cleaned, exterior dry, glass wiped, and tire shine.',
+      'We clean the inside of your car. Vacuum floors and seats, wipe down surfaces, clean windows, and remove trash.',
   },
   {
-    title: 'Full Detail',
+    title: 'Exterior Package',
     details:
-      'Hand wash, clay bar, sealant, interior vacuum, wipe-down, and windows.',
+      'We wash the outside of your car. Hand wash, clean wheels, dry the car, and make it shine.',
   },
   {
-    title: 'Interior Deep Clean',
+    title: 'Full Wash Package',
     details:
-      'Steam clean, shampoo, stain removal, leather conditioning, and odor treatment.',
-  },
-  {
-    title: 'Paint Correction',
-    details:
-      'Multi-stage polishing to remove swirls, scratches, and restore gloss.',
-  },
-  {
-    title: 'Ceramic Coating',
-    details:
-      'Long-term protection with hydrophobic coating for lasting shine.',
+      'We clean everything - inside and outside. This includes everything from both the Interior and Exterior packages.',
   },
 ]
 
@@ -58,7 +48,7 @@ export const seedBlogs: BlogPost[] = [
   },
   {
     id: 'blog-2',
-    title: 'Ceramic Coating: What It Does and Why It Matters',
+    title: 'How to Keep Your Car Clean',
     excerpt:
       'A protective layer that keeps your vehicle cleaner and shinier longer.',
     content:
@@ -74,7 +64,7 @@ export const seedBlogs: BlogPost[] = [
 export const seedVideos: VideoItem[] = [
   {
     id: 'video-1',
-    title: 'Interior Deep Clean Walkthrough',
+    title: 'Interior Cleaning Walkthrough',
     url: 'https://www.youtube.com/embed/fZrDeN6cUis',
     thumbnailUrl:
       'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80',
@@ -83,7 +73,7 @@ export const seedVideos: VideoItem[] = [
   },
   {
     id: 'video-2',
-    title: 'Paint Correction Before & After',
+    title: 'Exterior Cleaning Before & After',
     url: 'https://www.youtube.com/embed/5NV6Rdv1a3I',
     thumbnailUrl:
       'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80',

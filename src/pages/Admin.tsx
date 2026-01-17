@@ -11,11 +11,9 @@ import { useStoredState } from '../hooks/useStoredState'
 import type { BlogPost, GalleryItem, PackageType, VideoItem } from '../types'
 
 const packageOptions: PackageType[] = [
-  'Express Wash',
-  'Full Detail',
-  'Interior Deep Clean',
-  'Paint Correction',
-  'Ceramic Coating',
+  'Interior Package',
+  'Exterior Package',
+  'Full Wash Package',
 ]
 
 const createId = (prefix: string) =>
@@ -133,7 +131,7 @@ const Admin = () => {
                       setGalleryForm({ ...galleryForm, title: event.target.value })
                     }
                     required
-                    placeholder="e.g., 2020 Toyota Camry Full Detail"
+                    placeholder="e.g., 2020 Toyota Camry Full Wash Package"
                   />
                 </label>
                 <label>
@@ -410,7 +408,7 @@ const Admin = () => {
                       setVideoForm({ ...videoForm, title: event.target.value })
                     }
                     required
-                    placeholder="e.g., Full Detail Transformation - 2020 Camry"
+                    placeholder="e.g., Full Wash Package - 2020 Camry"
                   />
                 </label>
                 <label>

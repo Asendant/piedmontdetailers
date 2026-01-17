@@ -1,9 +1,7 @@
 export type PackageType =
-  | 'Express Wash'
-  | 'Full Detail'
-  | 'Interior Deep Clean'
-  | 'Paint Correction'
-  | 'Ceramic Coating'
+  | 'Interior Package'
+  | 'Exterior Package'
+  | 'Full Wash Package'
 
 export type GalleryItem = {
   id: string

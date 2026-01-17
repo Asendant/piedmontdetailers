@@ -176,40 +176,24 @@ const SEO = ({
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Express Wash',
-              description: 'Quick exterior wash and dry service',
+              name: 'Interior Package',
+              description: 'We clean the inside of your car',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Full Detail',
-              description: 'Complete interior and exterior detailing',
+              name: 'Exterior Package',
+              description: 'We wash the outside of your car',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Interior Deep Clean',
-              description: 'Comprehensive interior cleaning and protection',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Paint Correction',
-              description: 'Professional paint correction and restoration',
-            },
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Ceramic Coating',
-              description: 'Long-lasting ceramic coating protection',
+              name: 'Full Wash Package',
+              description: 'We clean everything - inside and outside',
             },
           },
         ],

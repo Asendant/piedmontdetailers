@@ -7,6 +7,10 @@ type FAQItem = {
 
 const faqData: FAQItem[] = [
   {
+    question: 'Do you offer steam cleaning, stain removal, or other advanced services?',
+    answer: 'Currently, we focus on our core detailing packages (interior cleaning, exterior wash, and full wash). Advanced services like steam cleaning and specialized stain removal are not currently available, but we may offer these services in the future as we expand our capabilities. Please check back or contact us to be notified when new services become available.',
+  },
+  {
     question: 'How much does mobile car detailing cost?',
     answer: 'Our pricing varies by package and vehicle size. Contact us for a custom quote based on your specific needs. We offer transparent pricing with no hidden fees.',
   },

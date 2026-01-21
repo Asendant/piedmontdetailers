@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import SEO from './SEO'
-import { counties, type CountyInfo } from '../data/locations'
+import { counties } from '../data/locations'
 import { servicePackages } from '../data/seed'
 import { getServiceRoute } from '../utils/routes'
 

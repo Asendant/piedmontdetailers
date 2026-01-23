@@ -23,18 +23,20 @@ export async function getApiEndpoints(): Promise<ApiEndpoints> {
     if (!response.ok) {
       throw new Error('Failed to load API endpoints')
     }
-    cachedEndpoints = await response.json()
-    return cachedEndpoints
+    const endpoints = await response.json() as ApiEndpoints
+    cachedEndpoints = endpoints
+    return endpoints
   } catch (error) {
     console.error('Error loading API endpoints:', error)
     // Fallback to placeholder (will fail gracefully)
-    return {
+    const fallback: ApiEndpoints = {
       baseUrl: '',
       subscribe: '',
       contact: '',
       gallery: '',
       galleryUploadUrl: '',
     }
+    return fallback
   }
 }
 

@@ -1,0 +1,26 @@
+{
+  "name": "piedmont-detailers-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Piedmont Detailers - Serverless AWS infrastructure",
+  "scripts": {
+    "build": "cdk synth",
+    "deploy": "cdk deploy",
+    "deploy:prod": "cdk deploy --require-approval never",
+    "destroy": "cdk destroy",
+    "diff": "cdk diff",
+    "bootstrap": "cdk bootstrap",
+    "test": "cdk synth",
+    "clean": "rm -rf cdk.out",
+    "get-api-url": "aws cloudformation describe-stacks --stack-name PiedmontDetailersBackend --query \"Stacks[0].Outputs[?OutputKey=='ApiGatewayUrl'].OutputValue\" --output text",
+    "generate-endpoints": "node scripts/generate-endpoints.js"
+  },
+  "keywords": [
+    "aws",
+    "serverless",
+    "cdk",
+    "lambda",
+    "api-gateway"
+  ],
+  "author": "",
+  "license": "ISC"
+}

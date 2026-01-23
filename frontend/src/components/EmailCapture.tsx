@@ -1,14 +1,27 @@
 import { useState } from 'react'
+import { subscribeEmail } from '../utils/api'
 
 const EmailCapture = () => {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send to your email service
-    setSubmitted(true)
-    setEmail('')
+    setLoading(true)
+    setError('')
+
+    const result = await subscribeEmail(email)
+    
+    if (result.success) {
+      setSubmitted(true)
+      setEmail('')
+    } else {
+      setError(result.message)
+    }
+    
+    setLoading(false)
   }
 
   return (
@@ -26,21 +39,31 @@ const EmailCapture = () => {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  setError('')
+                }}
                 placeholder="Enter your email"
                 required
-                className="flex-1 px-5 py-3 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/70 focus:outline-none focus:border-white/50 focus:bg-white/20"
+                disabled={loading}
+                className="flex-1 px-5 py-3 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/70 focus:outline-none focus:border-white/50 focus:bg-white/20 disabled:opacity-50"
               />
               <button
                 type="submit"
-                className="px-6 py-3 rounded-full font-bold text-sm bg-white text-primary-700 hover:bg-slate-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                disabled={loading}
+                className="px-6 py-3 rounded-full font-bold text-sm bg-white text-primary-700 hover:bg-slate-50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Notify Me
+                {loading ? 'Subscribing...' : 'Notify Me'}
               </button>
             </form>
           ) : (
             <p className="text-white/95 font-semibold">
               ✓ Thanks! We'll notify you when we launch.
+            </p>
+          )}
+          {error && (
+            <p className="text-red-200 text-sm mt-2">
+              {error}
             </p>
           )}
         </div>

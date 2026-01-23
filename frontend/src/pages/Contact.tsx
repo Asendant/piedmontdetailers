@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
+import { submitContactForm } from '../utils/api'
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   return (
     <>
@@ -105,9 +108,29 @@ const Contact = () => {
             </div>
             <form
               className="bg-gradient-to-br from-white to-slate-50 rounded-2xl p-8 shadow-md border-2 border-transparent relative overflow-hidden transition-all duration-300 flex flex-col gap-6 hover:-translate-y-1 hover:shadow-xl hover:border-primary-200"
-              onSubmit={(event) => {
+              onSubmit={async (event) => {
                 event.preventDefault()
-                setSubmitted(true)
+                setLoading(true)
+                setError('')
+
+                const formData = new FormData(event.currentTarget)
+                const result = await submitContactForm({
+                  name: formData.get('name') as string,
+                  phone: formData.get('phone') as string,
+                  vehicle: formData.get('vehicle') as string,
+                  service: formData.get('service') as string,
+                  location: formData.get('location') as string,
+                  notes: (formData.get('notes') as string) || undefined,
+                })
+
+                if (result.success) {
+                  setSubmitted(true)
+                  event.currentTarget.reset()
+                } else {
+                  setError(result.message)
+                }
+
+                setLoading(false)
               }}
             >
               <div className="absolute top-0 left-0 right-0 h-0.75 bg-gradient-to-r from-primary-500 via-primary-400 to-sky-300 scale-x-0 origin-left transition-transform duration-300 hover:scale-x-100" />
@@ -180,16 +203,22 @@ const Contact = () => {
                 />
               </label>
               <button
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base cursor-pointer no-underline transition-all duration-300 relative overflow-hidden bg-primary-500 text-white shadow-lg hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base cursor-pointer no-underline transition-all duration-300 relative overflow-hidden bg-primary-500 text-white shadow-lg hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 type="submit"
+                disabled={loading}
               >
-                Get My Quote
+                {loading ? 'Submitting...' : 'Get My Quote'}
               </button>
               {submitted ? (
                 <p className="text-green-700 font-semibold px-6 py-4 bg-green-50 rounded-2xl border-2 border-green-200 mt-4 text-base">
                   Thanks! We will follow up within one business day.
                 </p>
               ) : null}
+              {error && (
+                <p className="text-red-700 font-semibold px-6 py-4 bg-red-50 rounded-2xl border-2 border-red-200 mt-4 text-base">
+                  {error}
+                </p>
+              )}
             </form>
           </div>
         </div>

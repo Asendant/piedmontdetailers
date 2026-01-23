@@ -1,9 +1,8 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import SEO from '../components/SEO'
-import { loadGallery, saveGallery } from '../data/storage'
-import { useStoredState } from '../hooks/useStoredState'
-import type { PackageType } from '../types'
+import { getGalleryItems } from '../utils/api'
+import type { PackageType, GalleryItem } from '../types'
 
 const packageLabels: PackageType[] = [
   'Interior Package',
@@ -12,8 +11,38 @@ const packageLabels: PackageType[] = [
 ]
 
 const Gallery = () => {
-  const [items] = useStoredState(loadGallery, saveGallery)
+  const [items, setItems] = useState<GalleryItem[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [activeFilter, setActiveFilter] = useState<PackageType | 'All'>('All')
+
+  // Fetch gallery items on mount
+  useEffect(() => {
+    let mounted = true
+
+    async function fetchGallery() {
+      setLoading(true)
+      setError(null)
+      
+      const result = await getGalleryItems()
+      
+      if (!mounted) return
+
+      if (result.success) {
+        setItems(result.items as GalleryItem[])
+      } else {
+        setError(result.error || 'Failed to load gallery')
+      }
+      
+      setLoading(false)
+    }
+
+    fetchGallery()
+
+    return () => {
+      mounted = false
+    }
+  }, [])
 
   const filteredItems = useMemo(() => {
     if (activeFilter === 'All') {
@@ -21,6 +50,7 @@ const Gallery = () => {
     }
     return items.filter((item) => item.packageType === activeFilter)
   }, [activeFilter, items])
+
 
   return (
     <>
@@ -79,41 +109,55 @@ const Gallery = () => {
 
       <section className="py-20 sm:py-12 md:py-16">
         <div className="w-full max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredItems.map((item) => (
-              <article
-                key={item.id}
-                className="rounded-2xl overflow-hidden bg-gradient-to-br from-white to-slate-50 shadow-lg border-2 border-transparent flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-primary-200"
-              >
-                <img
-                  src={item.imageUrl}
-                  alt={`${item.packageType} - ${item.title} - Before and after car detailing results from Piedmont Detailers`}
-                  className="w-full h-[220px] sm:h-[200px] object-cover transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="p-6">
-                  <span className="inline-block bg-gradient-to-br from-blue-100 to-cyan-100 text-primary-700 px-4 py-1.5 rounded-full text-xs font-bold mb-3 border border-primary-200 shadow-sm">
-                    {item.packageType}
-                  </span>
-                  <h3 className="text-xl sm:text-lg md:text-xl font-bold text-slate-800 my-2 m-0">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-500 leading-relaxed my-2 text-sm sm:text-xs md:text-sm m-0">
-                    {item.description}
+          {loading ? (
+            <div className="text-center py-16">
+              <p className="text-slate-500 text-lg">Loading gallery...</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-16 px-8 text-red-600 bg-red-50 rounded-3xl border-2 border-red-200">
+              <p className="text-lg m-0">{error}</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredItems.map((item) => (
+                <article
+                  key={item.id}
+                  className="rounded-2xl overflow-hidden bg-gradient-to-br from-white to-slate-50 shadow-lg border-2 border-transparent flex flex-col transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-primary-200"
+                >
+                  <div className="w-full h-[220px] sm:h-[200px] bg-slate-200 relative overflow-hidden">
+                    <img
+                      src={item.imageUrl}
+                      alt={`${item.packageType} - ${item.title} - Before and after car detailing results from Piedmont Detailers`}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="inline-block bg-gradient-to-br from-blue-100 to-cyan-100 text-primary-700 px-4 py-1.5 rounded-full text-xs font-bold mb-3 border border-primary-200 shadow-sm">
+                      {item.packageType}
+                    </span>
+                    <h3 className="text-xl sm:text-lg md:text-xl font-bold text-slate-800 my-2 m-0">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-500 leading-relaxed my-2 text-sm sm:text-xs md:text-sm m-0">
+                      {item.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+              {filteredItems.length === 0 && (
+                <div className="col-span-full text-center py-16 px-8 text-slate-500 bg-gradient-to-br from-slate-50 to-white rounded-3xl border-2 border-dashed border-primary-200">
+                  <p className="text-lg m-0">
+                    {items.length === 0
+                      ? 'No gallery images yet.'
+                      : 'No images found for this filter. Try selecting a different package type.'}
                   </p>
                 </div>
-              </article>
-            ))}
-            {filteredItems.length === 0 && (
-              <div className="col-span-full text-center py-16 px-8 text-slate-500 bg-gradient-to-br from-slate-50 to-white rounded-3xl border-2 border-dashed border-primary-200">
-                <p className="text-lg m-0">
-                  {items.length === 0
-                    ? 'No gallery images yet.'
-                    : 'No images found for this filter. Try selecting a different package type.'}
-                </p>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
     </div>

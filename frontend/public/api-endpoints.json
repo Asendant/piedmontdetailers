@@ -1,0 +1,7 @@
+{
+  "baseUrl": "https://g5xk8oka2h.execute-api.us-east-1.amazonaws.com/prod/",
+  "subscribe": "https://g5xk8oka2h.execute-api.us-east-1.amazonaws.com/prod//subscribe",
+  "contact": "https://g5xk8oka2h.execute-api.us-east-1.amazonaws.com/prod//contact",
+  "gallery": "https://g5xk8oka2h.execute-api.us-east-1.amazonaws.com/prod//gallery",
+  "galleryUploadUrl": "https://g5xk8oka2h.execute-api.us-east-1.amazonaws.com/prod//gallery/upload-url"
+}
